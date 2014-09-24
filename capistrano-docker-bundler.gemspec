@@ -3,13 +3,13 @@ lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
-  spec.name          = 'capistrano-bundler'
+  spec.name          = 'capistrano-docker-bundler'
   spec.version       = '1.1.3'
-  spec.authors       = ['Tom Clements', 'Lee Hambley', 'Kir Shatrov']
-  spec.email         = ['seenmyfate@gmail.com', 'lee.hambley@gmail.com', 'shatrov@me.com']
-  spec.description   = %q{Bundler support for Capistrano 3.x}
-  spec.summary       = %q{Bundler support for Capistrano 3.x}
-  spec.homepage      = 'https://github.com/capistrano/bundler'
+  spec.authors       = ['Tom Clements', 'Lee Hambley', 'Kir Shatrov','Marino Bonetti']
+  spec.email         = ['seenmyfate@gmail.com', 'lee.hambley@gmail.com', 'shatrov@me.com','marinobonetti@gmail.com']
+  spec.description   = %q{Bundler support for Capistrano 3.x in Docker enviroment}
+  spec.summary       = %q{Bundler support for Capistrano 3.x in Docker enviroment}
+  spec.homepage      = 'https://github.com/oniram88/bundler.git'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files`.split($/)
