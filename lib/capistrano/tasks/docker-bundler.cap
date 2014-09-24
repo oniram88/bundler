@@ -62,23 +62,23 @@ namespace :docker do
       end
     end
 
-    before 'deploy:updated', 'bundler:install'
+    before 'deploy:updated', 'docker:bundler:install'
   end
+end
 
-  Capistrano::DSL.stages.each do |stage|
-    after stage, 'bundler:map_bins'
-  end
+Capistrano::DSL.stages.each do |stage|
+  after stage, 'docker:bundler:map_bins'
+end
 
-  namespace :load do
-    task :defaults do
-      set :bundle_bins, %w{gem rake rails}
+namespace :load do
+  task :defaults do
+    set :bundle_bins, %w{gem rake rails}
 
-      set :bundle_roles, :all
-      set :bundle_servers, -> { release_roles(fetch(:bundle_roles)) }
-      set :bundle_binstubs, -> { shared_path.join('bin') }
-      set :bundle_path, -> { shared_path.join('bundle') }
-      set :bundle_without, %w{development test}.join(' ')
-      set :bundle_flags, '--deployment --quiet'
-    end
+    set :bundle_roles, :all
+    set :bundle_servers, -> { release_roles(fetch(:bundle_roles)) }
+    set :bundle_binstubs, -> { shared_path.join('bin') }
+    set :bundle_path, -> { shared_path.join('bundle') }
+    set :bundle_without, %w{development test}.join(' ')
+    set :bundle_flags, '--deployment --quiet'
   end
 end
