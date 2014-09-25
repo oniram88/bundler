@@ -45,6 +45,10 @@ namespace :docker do
 
 
             execute :docker, options
+
+            #questo perchè quando viene fatta una release il file della cartella bundler è creata come root
+            #TODO correggere
+            execute :sudo, :chown, '-R', 'deployer:deployer', deploy_path
           end
         end
       end
